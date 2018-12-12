@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Marcus Hughes-Oliver.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -73,7 +73,23 @@ def problem4(number_of_stairs, step_size, starting_point, window):
     # IMPORTANT: For PARTIAL CREDIT, you can draw just the black "bottoms"
     #            of the stair steps.
     # -------------------------------------------------------------------------
+    starting_point.attach_to(window)
+    for k in range(number_of_stairs):
+        lineover = rg.Line(rg.Point(starting_point.x + k*step_size, starting_point.y - step_size - k*step_size)
+                           , rg.Point(starting_point.x + step_size + k*step_size, starting_point.y - step_size -
+                                      k*step_size))
+        lineover.thickness = 3
+        lineover.attach_to(window)
 
+    for k in range(number_of_stairs):
+        lineup = rg.Line(rg.Point(starting_point.x + k*step_size, starting_point.y - k*step_size)
+                         , rg.Point(starting_point.x + k*step_size, starting_point.y - step_size - k*step_size))
+        lineup.color = 'magenta'
+        lineup.thickness = 3
+        lineup.attach_to(window)
+    p2 = rg.Point(starting_point.x + number_of_stairs*step_size, starting_point.y - number_of_stairs*step_size)
+    p2.attach_to(window)
+    window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
